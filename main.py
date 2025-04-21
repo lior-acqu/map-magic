@@ -1,7 +1,7 @@
 from PIL import Image
 
-backgroundColor = [31, 44, 36] # [19, 23 ,56]
-transitColor = [72, 102, 73] # [74, 107, 139]
+backgroundColor = [31, 44, 36]
+transitColor = [72, 102, 73]
 accentColor = [255, 240, 222]
 
 def convert_to_grayscale(image_path, output_path):
@@ -21,9 +21,9 @@ def convert_to_grayscale(image_path, output_path):
         for y in range(img.height):
             r, g, b = img.getpixel((x, y))
             gray = (r + g + b) // 3
-            if gray > 255 * 0.45 and gray < 255 * 0.55: # (acquirable settings) normal settings: if gray > 255 * 0.50 and gray < 255 * 0.60:
+            if gray > 255 * 0.50 and gray < 255 * 0.60:
                 grayscale_img.putpixel((x, y), (transitColor[0], transitColor[1], transitColor[2]))
-            elif gray >= 255 * 0.55:
+            elif gray >= 255 * 0.60:
                 grayscale_img.putpixel((x, y), (backgroundColor[0], backgroundColor[1], backgroundColor[2]))
             else:
                 grayscale_img.putpixel((x, y), (accentColor[0], accentColor[1], accentColor[2]))
